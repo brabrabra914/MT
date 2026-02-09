@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ลงทะเบียนวิชาเรียน - โรงเรียนเวทมนตร์</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <aside id="sidebarMagic" class="sidebar-magic" aria-label="มีเวทย์พิเศษ">
+        <h3>✨ มีเวทย์แล้ว</h3>
+        <div id="completedMagicList"></div>
+    </aside>
+    <div class="main-with-sidebar">
+    <div class="container">
+        <header>
+            <h1>📚 ลงทะเบียนวิชาเรียน</h1>
+            <p class="subtitle">โรงเรียนเวทมนตร์</p>
+        </header>
+
+        <section class="registration-section">
+            <h2>ลงทะเบียนวิชาใหม่</h2>
+            <form id="registrationForm">
+                <div class="form-group">
+                    <label for="course">เลือกวิชา</label>
+                    <select id="course" required>
+                        <option value="">-- เลือกวิชา --</option>
+                        <option value="วิชาไม้กวาด">วิชาไม้กวาด</option>
+                        <option value="วิชาคาถา">วิชาคาถา</option>
+                        <option value="วิชาแปลงกาย">วิชาแปลงกาย</option>
+                        <option value="วิชาปรุงยา">วิชาปรุงยา</option>
+                        <option value="วิชาสมุนไพร">วิชาสมุนไพร</option>
+                        <option value="วิชาการต่อสู้ด้วยเวทมนต์">วิชาการต่อสู้ด้วยเวทมนต์</option>
+                        <option value="คลาสพิเศษ">คลาสพิเศษ</option>
+                        <option value="เวทย์พิเศษ">เวทย์พิเศษ</option>
+                    </select>
+                </div>
+                <div class="form-group" id="specialClassGroup" style="display:none">
+                    <label for="specialClassName">ชื่อคลาส</label>
+                    <input type="text" id="specialClassName" placeholder="พิมพ์ชื่อคลาส เช่น สอนแปลงร่างขั้นสูง">
+                </div>
+                <div class="form-group" id="specialMagicGroup" style="display:none">
+                    <label for="specialMagicName">ชื่อเวทย์ที่จะไปเรียน</label>
+                    <select id="specialMagicName">
+                        <option value="">-- เลือกเวทย์พิเศษ --</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dateMonth">วัน-เดือน</label>
+                        <div class="date-input-group">
+                            <select id="dateDay" required><option value="">วัน</option></select>
+                            <select id="dateMonth" required>
+                                <option value="">เดือน</option>
+                                <option value="1">ม.ค.</option><option value="2">ก.พ.</option><option value="3">มี.ค.</option><option value="4">เม.ย.</option>
+                                <option value="5">พ.ค.</option><option value="6">มิ.ย.</option><option value="7">ก.ค.</option><option value="8">ส.ค.</option>
+                                <option value="9">ก.ย.</option><option value="10">ต.ค.</option><option value="11">พ.ย.</option><option value="12">ธ.ค.</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">เวลา (24 ชม.)</label>
+                        <div class="time-input-group">
+                            <select id="timeHour" required><option value="">--</option></select>
+                            <span class="time-separator">:</span>
+                            <select id="timeMinute" required><option value="">--</option></select>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary" aria-label="ลงทะเบียนวิชาที่เลือก">ลงทะเบียน</button>
+            </form>
+        </section>
+
+        <section class="summary-section">
+            <h2>📋 ตารางปฏิทินวิชาเรียน</h2>
+            <div id="statsBar" class="stats-bar"><button type="button" class="btn-clear-cal" id="btnClearCalendar">ล้าง</button></div>
+            <div class="calendar-wrapper">
+                <p class="empty-message" id="emptyRegistered">ยังไม่มีวิชาที่ลงทะเบียน</p>
+                <table id="calendarTable" class="calendar-table">
+                    <thead><tr id="calendarHeader"></tr></thead>
+                    <tbody id="calendarBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="remaining-section">
+            <h2>⏳ วิชาที่ยังไม่ได้ลงทะเบียน</h2>
+            <p class="remaining-hint">คลิกเพื่อเลือกวิชาในฟอร์ม</p>
+            <div id="remainingList" class="remaining-list"></div>
+        </section>
+    </div>
+    </div>
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
